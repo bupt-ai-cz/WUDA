@@ -17,7 +17,20 @@ Please cite this paper in your publications if it helps your research:
 ## Introduction
 ## Frameworks
 ### WSSS-UDA
+Unsupervised Domain Adaptation For Semantic Segmentation
+
+[HIAST](https://github.com/bupt-ai-cz/HIAST)
+
+[CPSL](https://github.com/lslrh/cpsl)
+
+[CBST](https://github.com/yzou2/CBST)
 ### TDOD-WSSS
+
+Object Detection
+
+[Yolov5](https://github.com/ultralytics/yolov5)
+
+[Faster RCNN](https://github.com/jwyang/faster-rcnn.pytorch)
 ## Main Results
 ## Representation Shift and Constructed Dataset
 
