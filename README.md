@@ -29,6 +29,21 @@ We first propose the framework WSSS-UDA: in order to take advantage of the fine 
 <img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/c116de26-a5d1-4e0e-83c9-3b3b1a0a3c17" height="300">
 </div>
 
+#### Step 1: Box Supervised Segmentic Segmentation
+
+Clone this repo.
+```
+git clone https://github.com/bupt-ai-cz/WUDA.git
+```
+
+
+Perform GrabCut on the source domain images to obtain pseudo-labels that can be used for supervised semantic segmentation training.
+
+```
+cd grabcut
+grabcut.py --txt_path path/to/bboxes --image_path path/to/images --save_path path/to/pseudo_labels
+```
+
 Unsupervised Domain Adaptation For Semantic Segmentation
 
 [HIAST](https://github.com/bupt-ai-cz/HIAST)
