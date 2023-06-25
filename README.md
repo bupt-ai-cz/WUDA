@@ -43,17 +43,13 @@ cd grabcut
 grabcut.py --txt_path path/to/bboxes --image_path path/to/images --save_path path/to/pseudo_labels
 ```
 
-Train a semantic segmentation model using the pseudo-labels obtained from GrabCut. This stage corresponds to the warm-up phase of the unsupervised domain adaptation algorithm. We take our previous work, [HIAST](https://github.com/bupt-ai-cz/HIAST), as an example.
-
+Train a semantic segmentation model using the pseudo-labels obtained from GrabCut. This stage corresponds to the warm-up phase of the unsupervised domain adaptation algorithm. We use [HIAST](https://github.com/bupt-ai-cz/HIAST) in our work.
 #### Setp 2: Unsupervised Domain Adaptation For Semantic Segmentation
 
+This step corresponds to the adversarial training or self-training (or both) stage in unsupervised domain adaptation for semantic segmentation algorithms. Please refer to the second stage (adversarial training) and the third stage (self-training) of [HIAST](https://github.com/bupt-ai-cz/HIAST) for more details.
 
+We also benchmark other UDA algorithms within framework WSSS-UDA: [CBST](https://github.com/yzou2/CBST), [CPSL](https://github.com/lslrh/cpsl).
 
-[HIAST](https://github.com/bupt-ai-cz/HIAST)
-
-[CPSL](https://github.com/lslrh/cpsl)
-
-[CBST](https://github.com/yzou2/CBST)
 ### TDOD-WSSS
 
 we also implement the cross-domain process on the object detection task and propose the framework TDOD-WSSS (Figure 4(b)): First, use the bounding box labels of the source domain to train the object detection model, then predict bounding boxes on the target domain. Finally, implement box-supervised segmentation in the target domain.
@@ -62,11 +58,16 @@ we also implement the cross-domain process on the object detection task and prop
 <img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/4fab737b-6866-467e-aee6-2906298f61bd" height="300">
 </div>
 
-Object Detection
+#### Step 1: Target Domain Object Detection
 
-[Yolov5](https://github.com/ultralytics/yolov5)
+In this step, it is required to train an object detection model using the source domain data and provide predictions on the target domain images.
 
-[Faster RCNN](https://github.com/jwyang/faster-rcnn.pytorch)
+We benchmark [Yolov5](https://github.com/ultralytics/yolov5) within this framework.
+
+#### Step 2: Box Supervised Segmentic Segmentation
+
+Please refer to Step 2 in the framework WSSS-UDA.
+
 ## Main Results
 <div align="center">
 <img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/9d9faef7-69fd-4058-9db6-df0867a93cbf" height="400">
