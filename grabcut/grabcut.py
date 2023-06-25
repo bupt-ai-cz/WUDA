@@ -4,6 +4,16 @@ import numpy as np
 from PIL import Image
 import torch
 from tqdm import tqdm
+import argparse
+
+def parse_opt():
+    parser = argparse.ArgumentParser(description='')
+    parser.add_argument('--txt_path', type=str, default='/root/simple_does_it/datasets/cityscapes/train/bbox', help='folder containing label files, in yolov5 format')
+    parser.add_argument('--image_path', type=str, default='/root/simple_does_it/datasets/cityscapes/train/image', help='image path')
+    parser.add_argument('--save_path', type=str, default='/root/simple_does_it/datasets/cityscapes/train/grabcut', help='saving the pseudo label to this folder')
+    opt = parser.parse_args()
+    return opt
+opt = parse_opt()
 
 _MIN_AREA = 400
 _ITER_COUNT = 3
@@ -138,6 +148,7 @@ def grabcut(txt, image_path, valid_classes):
     return mask
 
 def BDD100kgrabcut(txt, image_path):
+    # for dataset BDD100k
     with open(txt,'r') as f:
         bbox_list = f.readlines()
     for i in range(len(bbox_list)):
@@ -170,6 +181,7 @@ def BDD100kgrabcut(txt, image_path):
     return mask
 
 def cityscapes_grabcut_yolov5_format(txt, image_path):
+    # for dataset cityscapes
     with open(txt,'r') as f:
         bbox_list = f.readlines()
     for i in range(len(bbox_list)):
@@ -206,6 +218,7 @@ def cityscapes_grabcut_yolov5_format(txt, image_path):
     return mask   
 
 def GTAV_grabcut_yolov5_format(txt, image_path):
+    # for dataset GTAV
     with open(txt,'r') as f:
         bbox_list = f.readlines()
     for i in range(len(bbox_list)):
@@ -241,36 +254,9 @@ def GTAV_grabcut_yolov5_format(txt, image_path):
             mask = np.where((gct == cv.GC_FGD) | (gct == cv.GC_PR_FGD), int(bbox_list[i][0]), mask).astype('uint8')
     return mask  
 
-def save_networks(epoch, net, save_path):
-        """Save all the networks to the disk.
-
-        Parameters:
-            epoch (int) -- current epoch; used in the file name '%s_net_%s.pth' % (epoch, name)
-        """
-        save_filename = 'net_%s.pth' % (epoch)
-        torch.save(net.state_dict(), os.path.join(save_path, save_filename))        
-
-def load_networks(epoch, net, load_path):
-        """Load all the networks from the disk.
-
-        Parameters:
-            epoch (int) -- current epoch; used in the file name 'net_%s.pth' % (epoch)
-        """
-        load_filename = 'net_%s.pth' % (epoch)
-        load_path = os.path.join(load_path, load_filename)
-        net.load_state_dict(torch.load(load_path))
-
-# txt_path = '/root/simple_does_it/mine/datasets/GTA5/train/bbox'
-# image_path = '/root/simple_does_it/mine/datasets/GTA5/train/image'
-# save_path = '/root/simple_does_it/mine/datasets/GTA5/train/grabcut'
-# for i in os.listdir(image_path):
-#     mask = grabcut(os.path.join(txt_path,i.split(".")[0])+'.txt', os.path.join(image_path,i), valid_classes)
-#     mask = Image.fromarray(mask)
-#     mask.save(os.path.join(save_path,i))
-
-txt_path = '/root/yolov5-pytorch/yolov5_for_BDD/runs/detect/exp/labels1'
-image_path = '/root/yolov5-pytorch/cityscapes/train'
-save_path = '/root/simple_does_it/mine/datasets/cityscapes/grabcut1'
+txt_path = opt.txt_path
+image_path = opt.image_path
+save_path = opt.save_path
 for i in tqdm(os.listdir(txt_path)):
     mask = cityscapes_grabcut_yolov5_format(os.path.join(txt_path,i), os.path.join(image_path,i.split('.')[0]+'.png'))
     mask = Image.fromarray(mask).convert('L')
