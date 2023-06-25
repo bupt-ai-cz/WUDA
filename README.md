@@ -54,12 +54,12 @@ Object Detection
 <img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/9d9faef7-69fd-4058-9db6-df0867a93cbf" height="400">
 </div>
 
-<div align="left">
-<img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/19c12d2c-6bc6-408a-bb60-a274f4fc9f79" height="260">
+<div align="center">
+<img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/19c12d2c-6bc6-408a-bb60-a274f4fc9f79" height="240">
 </div>
 
 <div align="center">
-<img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/a35bb07c-e21c-44a5-bc32-da2ede27fd11" height="170">
+<img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/a35bb07c-e21c-44a5-bc32-da2ede27fd11" height="150">
 </div>
 
 
