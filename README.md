@@ -74,6 +74,6 @@ Object Detection
 ### Constructed Dataset
 We construct a series of datasets with different domain shifts and further analyze the impact of multiple domain shifts on the two frameworks.
 <div align="center">
-<img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/60755742-35a2-4ba8-906c-68978cbfc5e9" height="300">
+<img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/60755742-35a2-4ba8-906c-68978cbfc5e9" height="280">
 </div>
 
