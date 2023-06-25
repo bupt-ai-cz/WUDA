@@ -40,7 +40,7 @@ Perform GrabCut on the source domain images to obtain pseudo-labels that can be 
 
 ```
 cd grabcut
-grabcut.py --txt_path path/to/bboxes --image_path path/to/images --save_path path/to/pseudo_labels
+python grabcut.py --txt_path path/to/bboxes --image_path path/to/images --save_path path/to/pseudo_labels
 ```
 
 Train a semantic segmentation model using the pseudo-labels obtained from GrabCut. This stage corresponds to the warm-up phase of the unsupervised domain adaptation algorithm. We use [HIAST](https://github.com/bupt-ai-cz/HIAST) in our work.
@@ -89,6 +89,23 @@ Please refer to Step 2 in the framework WSSS-UDA.
 <img src="https://github.com/bupt-ai-cz/WUDA/assets/33684330/6f661144-7c47-4e35-b547-e2c0d21999e1" height="300">
 </div>
 
+#### Calculate Representation Shift
+
+Firstly, train a DeepLabv3 model using the source domain dataset.
+```
+cd representation shift
+python train.py --image_root path/to/image --mask_root path/to/label
+```
+
+Secondly, calculate the representations of the source domain dataset and target domain dataset with the trained model.
+```
+python cal_representation.py --dataset_path path/to/dataset --model_path path/to/model --save_path path/to/representation --H 1024 --W 2048
+```
+
+Thirdly, calculate the representation shift of the two datasets.
+```
+python cal_representation_shift.py --representationA_path path/to/representationA --representationB_path path/to/representationB
+```
 
 ### Constructed Dataset
 We construct a series of datasets with different domain shifts and further analyze the impact of multiple domain shifts on the two frameworks.
