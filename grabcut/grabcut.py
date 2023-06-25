@@ -2,7 +2,6 @@ import cv2 as cv
 import os
 import numpy as np
 from PIL import Image
-import torch
 from tqdm import tqdm
 import argparse
 
