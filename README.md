@@ -36,7 +36,6 @@ Clone this repo.
 git clone https://github.com/bupt-ai-cz/WUDA.git
 ```
 
-
 Perform GrabCut on the source domain images to obtain pseudo-labels that can be used for supervised semantic segmentation training.
 
 ```
@@ -44,7 +43,11 @@ cd grabcut
 grabcut.py --txt_path path/to/bboxes --image_path path/to/images --save_path path/to/pseudo_labels
 ```
 
-Unsupervised Domain Adaptation For Semantic Segmentation
+Train a semantic segmentation model using the pseudo-labels obtained from GrabCut. This stage corresponds to the warm-up phase of the unsupervised domain adaptation algorithm. We take our previous work, [HIAST](https://github.com/bupt-ai-cz/HIAST), as an example.
+
+#### Setp 2: Unsupervised Domain Adaptation For Semantic Segmentation
+
+
 
 [HIAST](https://github.com/bupt-ai-cz/HIAST)
 
