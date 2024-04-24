@@ -1,5 +1,5 @@
 # WUDA
-WUDA
+WUDA：Unsupervised Domain Adaptation Based on Weak Source Domain Labels
 
 ## Citation 
 Please cite this paper in your publications if it helps your research:
